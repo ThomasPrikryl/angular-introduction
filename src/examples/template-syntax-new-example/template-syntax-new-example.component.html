@@ -1,0 +1,32 @@
+<div>{{ simpleString }}</div>
+<div>{{ dateThatNeedsFormatting | date }}</div>
+
+@if (condition) {
+  <div>
+    Show me only if condition is TRUE
+  </div>
+}
+
+<div>
+  @for (element of [1, 2, 3, 4, 5]; track element) {
+    <span>{{ element }}</span>
+  }
+</div>
+
+@switch (color) {
+  @case ('green') {
+    <div>
+      Show me if color is GREEN
+    </div>
+  }
+  @case ('red') {
+    <div>
+      Show me if color is RED
+    </div>
+  }
+  @default {
+    <div>
+      Show me if color is SOMETHING ELSE
+    </div>
+  }
+}

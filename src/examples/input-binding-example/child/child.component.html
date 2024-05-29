@@ -1,0 +1,8 @@
+<p>child works!</p>
+<button (click)="addCount()">CLICK</button>
+
+
+<input type="text" [ngModel]="username" (ngModelChange)="updateUsername($event)"/>
+
+<input type="text" [(ngModel)]="username"/>
+

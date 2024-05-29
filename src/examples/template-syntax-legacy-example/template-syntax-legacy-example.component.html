@@ -1,0 +1,23 @@
+<div>{{ simpleString }}</div>
+<div>{{ dateThatNeedsFormatting | date }}</div>
+
+<div *ngIf="condition">
+  Show me only if condition is TRUE
+</div>
+
+<div>
+    <span *ngFor="let element of [1,2,3,4,5]">{{element}}</span>
+</div>
+
+<div [ngSwitch]="color">
+  <div *ngSwitchCase="'green'">
+    Show me if color is GREEN
+  </div>
+  <div *ngSwitchCase="'red'">
+    Show me if color is RED
+  </div>
+  <div *ngSwitchDefault>
+    Show me if color is SOMETHING ELSE
+  </div>
+</div>
+
