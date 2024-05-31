@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "json-server": "node server.js",
+    "setup-json-server-database": "node setup-server.js",
+    "postinstall": "npm run setup-json-server-database"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +22,9 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
     "bootstrap": "^5.3.3",
+    "countries-list": "^3.1.0",
+    "flag-icons": "^7.2.3",
+    "json-server": "^0.17.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -27,6 +33,7 @@
     "@angular-devkit/build-angular": "^18.0.1",
     "@angular/cli": "^18.0.1",
     "@angular/compiler-cli": "^18.0.0",
+    "@faker-js/faker": "^8.4.1",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
