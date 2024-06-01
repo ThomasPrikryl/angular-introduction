@@ -11,6 +11,7 @@ import {
   TemplateSyntaxNewExampleComponent
 } from "../examples/template-syntax-new-example/template-syntax-new-example.component";
 import {JavascriptRefresherComponent} from "../examples/javascript-refresher/javascript-refresher.component";
+import {ChildComponent} from "./child/child.component";
 
 @Component({
   selector: 'app-root',
@@ -23,53 +24,21 @@ import {JavascriptRefresherComponent} from "../examples/javascript-refresher/jav
     InputBindingExampleComponent,
     TemplateSyntaxLegacyExampleComponent,
     TemplateSyntaxNewExampleComponent,
-    JavascriptRefresherComponent
+    JavascriptRefresherComponent,
+    ChildComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
+export class AppComponent {
+
+  valueCounter = 5;
 
   timeCounter = 0;
-  valueCounter = 0;
 
   constructor() {
-    console.log('constructor');
     setInterval(() => {
       this.timeCounter++;
     }, 1000);
   }
-
-  ngOnInit(): void {
-    console.log('ngOnInit');
-  }
-
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges');
-  }
-
-  ngOnDestroy(): void {
-    console.log('ngOnDestroy');
-  }
-
-  decrement() {
-    if (this.valueCounter > 0) {
-      this.valueCounter--;
-    }
-  }
-
-  increment() {
-    if (this.valueCounter < 20) {
-      this.valueCounter++;
-    }
-  }
-
-  get counterArray() {
-    return new Array(this.valueCounter);
-  }
 }
-

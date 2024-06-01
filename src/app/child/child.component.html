@@ -1,0 +1,27 @@
+<div>
+  <button class="btn btn-primary" (click)="decrement()">-</button>
+  <span class="m-2">{{valueCounter}}</span>
+  <button class="btn btn-primary" (click)="increment()">+</button>
+</div>
+
+<div>
+  @if(valueCounter <=5) {
+    <p>LOW</p>
+  } @else if(valueCounter >= 6 && valueCounter <=15) {
+    <p>MID</p>
+  } @else if(valueCounter >= 16) {
+    <p>HIGH</p>
+  }
+</div>
+
+<div>
+  @if(valueCounter == 0) {
+    <p>There are no stars</p>
+  } @else if(valueCounter == 20) {
+    <p>Stars maxed out</p>
+  } @else {
+    @for(el of counterArray; track el) {
+      <span>*</span>
+    }
+  }
+</div>
