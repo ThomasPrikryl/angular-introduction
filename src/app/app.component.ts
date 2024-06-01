@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {PromiseExampleComponent} from "../examples/promise-example/promise-example.component";
 import {ObservableExampleComponent} from "../examples/observable-example/observable-example.component";
@@ -28,7 +28,32 @@ import {JavascriptRefresherComponent} from "../examples/javascript-refresher/jav
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
+
+  timeCounter = 0;
+
+  constructor() {
+    console.log('constructor');
+    setInterval(() => {
+      this.timeCounter++;
+    }, 1000);
+  }
+
+  ngOnInit(): void {
+    console.log('ngOnInit');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges');
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
+  }
 
 }
 
