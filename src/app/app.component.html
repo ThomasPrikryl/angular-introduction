@@ -7,6 +7,7 @@
   <span class="m-2">{{valueCounter}}</span>
   <button class="btn btn-primary" (click)="increment()">+</button>
 </div>
+
 <div>
   @if(valueCounter <=5) {
     <p>LOW</p>
@@ -16,6 +17,7 @@
     <p>HIGH</p>
   }
 </div>
+
 <div>
   @for(el of counterArray; track el) {
     <span>*</span>
