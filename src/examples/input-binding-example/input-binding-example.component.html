@@ -1,5 +1,5 @@
 <div>
-  <input [value]="'Initialer Wert'" class="form-control"/>
+  <input [value]="'Initial Value'" class="form-control"/>
 </div>
 <div>
   <input (keyup)="log($event)" class="form-control"/>
@@ -8,12 +8,4 @@
   <input [(ngModel)]="myString" class="form-control"/>
   <span>{{ myString }}</span>
 </div>
-
-
-
-
-<app-child [item]="item" (itemChange)="updateItem($event)"></app-child>
-
-<app-child [(item)]="item"></app-child>
-
 

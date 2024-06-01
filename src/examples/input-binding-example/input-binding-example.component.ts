@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {ChildComponent} from "./child/child.component";
 
 @Component({
   selector: 'app-input-binding-example',
   standalone: true,
-  imports: [CommonModule, FormsModule, ChildComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './input-binding-example.component.html',
   styleUrl: './input-binding-example.component.scss'
 })
