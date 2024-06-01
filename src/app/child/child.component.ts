@@ -9,6 +9,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
+import {CounterService} from "../counter.service";
 
 @Component({
   selector: 'app-child',
@@ -19,11 +20,9 @@ import {
 })
 export class ChildComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
 
-  @Input() valueCounter: number = 0;
+  valueCounter = this.counterService.valueCounter;
 
-  @Output() valueCounterChange = new EventEmitter<number>();
-
-  constructor() {
+  constructor(private counterService: CounterService) {
     console.log('constructor');
   }
 
@@ -46,14 +45,14 @@ export class ChildComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
   decrement() {
     if (this.valueCounter > 0) {
       this.valueCounter--;
-      this.valueCounterChange.emit(this.valueCounter);
+      this.counterService.setValueCounter(this.valueCounter);
     }
   }
 
   increment() {
     if (this.valueCounter < 20) {
       this.valueCounter++;
-      this.valueCounterChange.emit(this.valueCounter);
+      this.counterService.setValueCounter(this.valueCounter);
     }
   }
 
