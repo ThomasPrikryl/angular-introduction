@@ -17,7 +17,7 @@ The application will automatically reload if you change any of the source files.
 ## I: Examples
 
 It contains examples of basic JS/TS features (as a refresher) as well as building blocks used in Angular.
-You can find examples and exercises under `src/examples`
+You can find examples under `src/examples`
 
 
 ## II: Travelling App
