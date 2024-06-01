@@ -5,7 +5,16 @@ html, body {
   padding: 1rem;
   box-sizing: border-box;
 
-  input {
-    margin-bottom: .5rem;
+  input.form-control {
+    margin: .1rem .1rem .1rem .1rem;
+    width: auto !important;
+    display: inline-block !important;
   }
+
+  button.form-control {
+    width: auto;
+    display: inline-block;
+    margin: .1rem;
+  }
+
 }
