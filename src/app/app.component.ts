@@ -31,6 +31,7 @@ import {JavascriptRefresherComponent} from "../examples/javascript-refresher/jav
 export class AppComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
 
   timeCounter = 0;
+  valueCounter = 0;
 
   constructor() {
     console.log('constructor');
@@ -55,5 +56,20 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit
     console.log('ngOnDestroy');
   }
 
+  decrement() {
+    if (this.valueCounter > 0) {
+      this.valueCounter--;
+    }
+  }
+
+  increment() {
+    if (this.valueCounter < 20) {
+      this.valueCounter++;
+    }
+  }
+
+  get counterArray() {
+    return new Array(this.valueCounter);
+  }
 }
 
