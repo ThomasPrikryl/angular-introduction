@@ -20,7 +20,7 @@ It contains examples of basic JS/TS features (as a refresher) as well as buildin
 You can find examples under `src/examples`
 A detailed task description will be handed out to the participants separately.
 
-## II: Travelling App
+## II: Fake Travelling Guide App
 
 The 2nd part of this app is a fake travelling guide with fake reviews.
 
