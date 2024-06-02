@@ -11,6 +11,7 @@ import {
   TemplateSyntaxNewExampleComponent
 } from "../examples/template-syntax-new-example/template-syntax-new-example.component";
 import {JavascriptRefresherComponent} from "../examples/javascript-refresher/javascript-refresher.component";
+import {RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ import {JavascriptRefresherComponent} from "../examples/javascript-refresher/jav
     InputBindingExampleComponent,
     TemplateSyntaxLegacyExampleComponent,
     TemplateSyntaxNewExampleComponent,
-    JavascriptRefresherComponent
+    JavascriptRefresherComponent,
+    RouterOutlet
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
