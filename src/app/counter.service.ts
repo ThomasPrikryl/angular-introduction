@@ -1,23 +1,36 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CounterService {
 
-  public valueCounter = 0;
+  valueCounter$ = new BehaviorSubject<number>(0);
 
   changeCounter = 0;
 
-  constructor() { }
+  constructor() {
+  }
 
   setValueCounter(value: number) {
-    this.valueCounter = value;
+    this.valueCounter$.next(value);
     this.changeCounter++;
     console.log('Change counter:', this.changeCounter);
 
-    if (this.changeCounter %100 ===0) {
+    if (this.changeCounter % 100 === 0) {
       console.log('Maybe you should take a break?');
     }
   }
+
+  getValueCounter$(): Observable<number> {
+    return this.valueCounter$;
+
+    // ----------------------------------------------------------
+    // Enable to track the calls to this observable
+    // return this.valueCounter$.pipe(tap((value: number) => {
+    //   console.log('Value counter:', value);
+    // }));
+  }
+
 }

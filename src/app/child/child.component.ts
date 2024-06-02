@@ -1,15 +1,6 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  Output,
-  SimpleChanges
-} from '@angular/core';
+import {AfterViewInit, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {CounterService} from "../counter.service";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-child',
@@ -20,10 +11,16 @@ import {CounterService} from "../counter.service";
 })
 export class ChildComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
 
-  valueCounter = this.counterService.valueCounter;
+  valueCounter = 0;
 
   constructor(private counterService: CounterService) {
     console.log('constructor');
+    this.counterService
+      .getValueCounter$()
+      .pipe(first())
+      .subscribe((value: number) => {
+      this.valueCounter = value;
+    });
   }
 
   ngOnInit(): void {

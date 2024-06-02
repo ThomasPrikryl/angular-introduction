@@ -4,9 +4,11 @@
 
 <div>
   <app-child></app-child>
-  @if (valueCounter%2 ==0) {
-    {{valueCounter}} is even
-  } @else {
-    {{valueCounter}} is odd
+  @if ({val: (valueCounter$ | async)}; as valueCounter) {
+    @if ((valueCounter?.val || 0)%2 ==0) {
+      {{valueCounter?.val}} is even
+    } @else {
+      {{valueCounter?.val}} is odd
+    }
   }
 </div>
