@@ -23,4 +23,9 @@ export class CountryService {
 
   }
 
+  loadCountry(countryId: string) {
+    return this.httpClient.get<Country[]>('/api/countries?id=' + countryId)
+      .pipe(first());
+
+  }
 }

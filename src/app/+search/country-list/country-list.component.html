@@ -1,5 +1,5 @@
 <div class="country-list">
   @for(country of (countries$ | async); track country.id) {
-    <app-country [country]="country"></app-country>
+    <app-country [country]="country" [routerLink]="'/detail/'+country.id"></app-country>
   }
 </div>
