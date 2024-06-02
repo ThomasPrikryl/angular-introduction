@@ -1,4 +1,3 @@
-<p>country-list works!</p>
 <div class="country-list">
   @for(country of (countries$ | async); track country.id) {
     <app-country [country]="country"></app-country>
