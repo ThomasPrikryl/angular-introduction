@@ -12,7 +12,6 @@ import {
 } from "../examples/template-syntax-new-example/template-syntax-new-example.component";
 import {JavascriptRefresherComponent} from "../examples/javascript-refresher/javascript-refresher.component";
 import {ChildComponent} from "./child/child.component";
-import {CounterService} from "./counter.service";
 
 @Component({
   selector: 'app-root',
@@ -33,11 +32,11 @@ import {CounterService} from "./counter.service";
 })
 export class AppComponent {
 
-  valueCounter = this.counterService.valueCounter;
+  valueCounter = 5;
 
   timeCounter = 0;
 
-  constructor(private counterService: CounterService) {
+  constructor() {
     setInterval(() => {
       this.timeCounter++;
     }, 1000);
