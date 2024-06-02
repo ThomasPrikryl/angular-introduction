@@ -35,8 +35,6 @@ import {Observable} from "rxjs";
 })
 export class AppComponent {
 
-  // valueCounter = 0;
-
   valueCounter$: Observable<number> = this.counterService.getValueCounter$();
 
   timeCounter = 0;
@@ -45,18 +43,5 @@ export class AppComponent {
     setInterval(() => {
       this.timeCounter++;
     }, 1000);
-
-    // ----------------------------------------------------------
-    // As alternative to valueCounter$ with the async pipe,
-    // you can subscribe to the observable in the constructor:
-    // ----------------------------------------------------------
-    // this.counterService
-    //   .getValueCounter$()
-    //   .pipe(
-    //     takeUntilDestroyed()
-    //   )
-    //   .subscribe(value => {
-    //     this.valueCounter = value;
-    //   })
   }
 }
