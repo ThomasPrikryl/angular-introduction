@@ -36,9 +36,6 @@ import {CountryComponent} from "./shared/country/country.component";
 })
 export class AppComponent {
 
-  constructor(private countryService: CountryService) {
-    this.countryService.loadData();
-  }
 
 }
 

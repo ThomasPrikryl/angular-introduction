@@ -12,9 +12,9 @@ export class CountryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public loadData() {
+  public loadData(capital: string) {
 
-    this.httpClient.get<Country[]>('/api/countries')
+    this.httpClient.get<Country[]>('/api/countries?capital_like=' + capital)
       .pipe(first())
       .subscribe((data: Country[]) => {
         console.log('Data loaded', data);

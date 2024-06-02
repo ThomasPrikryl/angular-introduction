@@ -1,1 +1,6 @@
-<p>filter works!</p>
+<div>
+  <label for="capitalRef">Capital: </label>
+  <input type="text" class="form-control" id="capitalRef"
+         [(ngModel)]="capital">
+</div>
+<button type="submit" class="btn btn-primary" (click)="search()">Search</button>
