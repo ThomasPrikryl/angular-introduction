@@ -12,6 +12,12 @@ export class Country {
   reviewCount: number = 0;
 }
 
+export class ReviewResponse {
+  ratings?: {[key: string]: number};
+  ratingsPercentages?: {[key: string]: number};
+  reviews?: Review[] = [];
+}
+
 export class Review {
   id?: number;
   countryId?: string;

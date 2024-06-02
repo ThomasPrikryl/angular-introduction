@@ -1,1 +1,23 @@
 <app-country [country]="country"></app-country>
+
+@for(review of reviews; track review.id) {
+
+  <div class="review-card">
+    <div class="review-card-head">
+      <div class="review-card-head-left">
+        <ngb-rating [rate]="review.rating || 0" [max]="5" [disabled]="true">
+          <ng-template let-fill="fill" let-index="index">
+            <i class="bi-star{{ fill === 100 ? '-fill' : '' }}"
+               [ngClass]="fill === 100 ? 'review-card-rating-filled' :''"></i>
+          </ng-template>
+        </ngb-rating>
+        <span>
+          <i class="bi bi-person"></i>
+          {{review.username}}
+        </span>
+      </div>
+      <span>{{review.timestamp | date}}</span>
+    </div>
+    <p class="review-card-message">{{review.comment}}</p>
+  </div>
+}
