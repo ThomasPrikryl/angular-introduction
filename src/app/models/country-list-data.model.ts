@@ -2,12 +2,14 @@ export class Country {
   id?: string;
   name?: string;
   native?: string;
-  phone?: number[];
+  phone?: number[] = [];
   continent?: string;
   capital?: string;
-  currency?: string[];
-  languages?: string[];
-  languagesWithNames?: string[];
+  currency?: string[] = [];
+  languages?: string[] = [];
+  languagesWithNames?: string[] = [];
+  averageRating: number = 0;
+  reviewCount: number = 0;
 }
 
 export class Review {

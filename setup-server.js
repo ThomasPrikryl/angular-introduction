@@ -3,13 +3,17 @@ const { faker } = require('@faker-js/faker');
 const countries = require('countries-list').countries;
 const languages = require('countries-list').languages;
 
-const changeForCountryToHaveAnyReviews = 0.2;
+const chanceForCountryToHaveAnyReviews = 0.90;
 
 try {
   const data = {};
 
   data.countries = getCountryData();
   data.reviews = getReviewData();
+
+  const avgRating = data.reviews.reduce((acc, review) => acc + review.rating, 0) / data.reviews.length;
+
+    console.log(data.reviews.length, avgRating);
 
 // Save the data to db.json
   fs.writeFileSync('db.json', JSON.stringify(data, null, 2));
@@ -39,7 +43,7 @@ function getReviewData() {
 
 function generateRandomReviews(countryKey) {
   const forceHasReviews = countryKey === 'AT';
-  if (Math.random() > changeForCountryToHaveAnyReviews && !forceHasReviews) {
+  if (Math.random() > chanceForCountryToHaveAnyReviews && !forceHasReviews) {
     return [];
   } else {
     const reviews = [];
@@ -56,6 +60,7 @@ function generateRandomReviews(countryKey) {
       };
       reviews.push(review);
     }
+    console.log(reviews.length, countryKey);
     return reviews;
   }
 }

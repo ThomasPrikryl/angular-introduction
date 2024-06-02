@@ -14,12 +14,24 @@ router.render = (req, res) => {
       acc[review.countryId].totalRating += review.rating;
       return acc;
     }, {});
-    res.locals.data = res.locals.data.map(country => {
+    const resp = res.locals.data.map(country => {
       let data = reviewData[country.id] || {count: 0, totalRating: 0};
       country.reviewCount = data.count;
       country.averageRating = data.count > 0 ? Math.round((data.totalRating / data.count) * 10) / 10 : 0.0;
       return country;
     });
+    let sorted = resp;
+    if (req.url.includes('averageRating=desc')) {
+      sorted = resp.sort((a, b) => b.averageRating - a.averageRating);
+    } else if (req.url.includes('averageRating=asc'))  {
+      sorted = resp.sort((a, b) => a.averageRating - b.averageRating);
+    }
+    if (req.url.includes('capital=desc')) {
+      sorted = resp.sort((a, b) => b.capital - a.capital);
+    } else if (req.url.includes('capital=asc')) {
+      sorted = resp.sort((a, b) => a.capital - b.capital);
+    }
+    res.locals.data = sorted;
   } else if (req.url.startsWith('/reviews')) {
     const ratings = {
       '1': 0,
@@ -29,15 +41,15 @@ router.render = (req, res) => {
       '5': 0
     };
     res.locals.data.forEach(review => {
-      if(review.rating > 0 && review.rating <2) {
+      if (review.rating > 0 && review.rating < 2) {
         ratings['1'] = ratings['1'] ? ratings['1'] + 1 : 1;
-      } else if(review.rating >= 2 && review.rating <3) {
+      } else if (review.rating >= 2 && review.rating < 3) {
         ratings['2'] = ratings['2'] ? ratings['2'] + 1 : 1;
-      }else if(review.rating >= 3 && review.rating <4) {
+      } else if (review.rating >= 3 && review.rating < 4) {
         ratings['3'] = ratings['3'] ? ratings['3'] + 1 : 1;
-      }else if(review.rating >= 4 && review.rating <5) {
+      } else if (review.rating >= 4 && review.rating < 5) {
         ratings['4'] = ratings['4'] ? ratings['4'] + 1 : 1;
-      }else if(review.rating >= 5) {
+      } else if (review.rating >= 5) {
         ratings['5'] = ratings['5'] ? ratings['5'] + 1 : 1;
       }
     });
@@ -67,7 +79,7 @@ function calculateRatings(ratings, totalNumberOfRatings) {
   let difference = 100 - sumRounded;
 
   for (let i = 0; i < difference; i++) {
-    roundedValues[i+1]++;
+    roundedValues[i + 1]++;
   }
 
   return roundedValues;

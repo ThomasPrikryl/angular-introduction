@@ -14,6 +14,7 @@ import {JavascriptRefresherComponent} from "../examples/javascript-refresher/jav
 import {RouterOutlet} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {CountryService} from "./country.service";
+import {CountryComponent} from "./shared/country/country.component";
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ import {CountryService} from "./country.service";
     TemplateSyntaxLegacyExampleComponent,
     TemplateSyntaxNewExampleComponent,
     JavascriptRefresherComponent,
-    RouterOutlet
+    RouterOutlet,
+    CountryComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

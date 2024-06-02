@@ -17,6 +17,7 @@ export class CountryService {
       .subscribe((data: Country[]) => {
         console.log('Data loaded', data);
     });
+
   }
 
 }
