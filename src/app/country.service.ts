@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Country, Review, ReviewResponse} from "./models/country-list-data.model";
+import {Country} from "./models/country-list-data.model";
 import {first, Subject} from "rxjs";
 
 @Injectable({
@@ -27,10 +27,5 @@ export class CountryService {
     return this.httpClient.get<Country[]>('/api/countries?id=' + countryId)
       .pipe(first());
 
-  }
-
-  loadReviewsForCountry(countryId: string) {
-    return this.httpClient.get<ReviewResponse>('/api/reviews?countryId=' + countryId)
-      .pipe(first());
   }
 }
