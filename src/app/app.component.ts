@@ -12,6 +12,8 @@ import {
 } from "../examples/template-syntax-new-example/template-syntax-new-example.component";
 import {JavascriptRefresherComponent} from "../examples/javascript-refresher/javascript-refresher.component";
 import {RouterOutlet} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {CountryService} from "./country.service";
 
 @Component({
   selector: 'app-root',
@@ -31,6 +33,10 @@ import {RouterOutlet} from "@angular/router";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+  constructor(private countryService: CountryService) {
+    this.countryService.loadData();
+  }
 
 }
 
