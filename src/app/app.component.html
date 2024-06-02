@@ -2,7 +2,8 @@
   <h5>{{coordinates.x}} | {{coordinates.y}}</h5>
 </div>
 <div>
-  <div>{{timeCounter}}</div>
+  <div class="example-time"
+       [ngClass]="timeCounter%2 === 0 ? 'example-time-green': 'example-time-red'">{{timeCounter}}</div>
 
   @if(showTimeIndicator) {
     <p>TIME!</p>
