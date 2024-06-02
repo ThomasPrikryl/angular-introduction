@@ -10,7 +10,12 @@ export class CounterService {
 
   changeCounter = 0;
 
+  resetLimit = 0;
+
+  resetCounter = 0;
+
   constructor() {
+
   }
 
   setValueCounter(value: number) {
@@ -33,4 +38,14 @@ export class CounterService {
     // }));
   }
 
+  reset() {
+    if (this.resetCounter < this.resetLimit) {
+      this.resetCounter++;
+      this.setValueCounter(0);
+    }
+  }
+
+  setResetLimit(limit: number) {
+    this.resetLimit = limit;
+  }
 }

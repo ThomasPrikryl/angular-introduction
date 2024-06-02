@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {AfterViewInit, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {PromiseExampleComponent} from "../examples/promise-example/promise-example.component";
 import {ObservableExampleComponent} from "../examples/observable-example/observable-example.component";
@@ -14,7 +14,7 @@ import {JavascriptRefresherComponent} from "../examples/javascript-refresher/jav
 import {ChildComponent} from "./child/child.component";
 import {CounterService} from "./counter.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {Observable} from "rxjs";
+import {combineLatest, fromEvent, interval, Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -39,9 +39,30 @@ export class AppComponent {
 
   timeCounter = 0;
 
+  coordinates = {x: 0, y: 0};
+
+  showTimeIndicator = false;
+
+  numberOfResets = 3;
+
   constructor(private counterService: CounterService) {
-    setInterval(() => {
-      this.timeCounter++;
-    }, 1000);
+    this.counterService.setResetLimit(3);
+    combineLatest([
+      fromEvent(document, 'mousemove'),
+      interval(1000)
+    ])
+      .pipe(takeUntilDestroyed())
+      .subscribe(([mouseEvent, time]: [any, number]) => {
+
+        this.coordinates = {x: mouseEvent.pageX, y: mouseEvent.pageY};
+        this.timeCounter = time || 0;
+        this.showTimeIndicator = this.coordinates
+          && (this.coordinates.x < this.timeCounter
+            || this.coordinates.y < this.timeCounter);
+      });
+  }
+
+  reset() {
+    this.counterService.reset();
   }
 }

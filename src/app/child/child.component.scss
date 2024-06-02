@@ -1,0 +1,16 @@
+.state {
+  display: inline-block;
+  color: white;
+  padding: .2rem;
+  border-radius: 5px;
+
+  &-low {
+    background-color: green;
+  }
+  &-mid {
+    background-color: orange;
+  }
+  &-high {
+    background-color: red;
+  }
+}

@@ -6,11 +6,11 @@
 
 <div>
   @if(valueCounter <=5) {
-    <p>LOW</p>
+    <p class="state state-low">LOW</p>
   } @else if(valueCounter >= 6 && valueCounter <=15) {
-    <p>MID</p>
+    <p class="state state-mid">MID</p>
   } @else if(valueCounter >= 16) {
-    <p>HIGH</p>
+    <p class="state state-high">HIGH</p>
   }
 </div>
 

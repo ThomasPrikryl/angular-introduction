@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {CounterService} from "../counter.service";
 import {first} from "rxjs";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-child',
@@ -17,7 +18,7 @@ export class ChildComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     console.log('constructor');
     this.counterService
       .getValueCounter$()
-      .pipe(first())
+      .pipe(takeUntilDestroyed())
       .subscribe((value: number) => {
       this.valueCounter = value;
     });
