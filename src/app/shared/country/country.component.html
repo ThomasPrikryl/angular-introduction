@@ -9,7 +9,7 @@
       <span>{{ country.languagesWithNames || '-'}}</span>
     </div>
     <div class="country-card-rating">
-      <ngb-rating [(rate)]="country.averageRating" [max]="5">
+      <ngb-rating [(rate)]="country.averageRating" [max]="5" [disabled]="true">
         <ng-template let-fill="fill" let-index="index">
           <i class="bi-star{{ fill === 100 ? '-fill' : '' }}" [ngClass]="fill === 100 ? 'country-card-rating-filled' :''"></i>
         </ng-template>
