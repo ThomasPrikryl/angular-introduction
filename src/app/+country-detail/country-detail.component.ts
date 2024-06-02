@@ -19,6 +19,7 @@ export class CountryDetailComponent implements OnInit {
   country?: Country;
 
   constructor(private countryService: CountryService) {
+
   }
 
   ngOnInit(): void {
