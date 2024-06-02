@@ -8,6 +8,8 @@ import {first, Subject} from "rxjs";
 })
 export class CountryService {
 
+  countries$ = new Subject<Country[]>();
+
   constructor(private httpClient: HttpClient) { }
 
   public loadData() {
@@ -16,6 +18,7 @@ export class CountryService {
       .pipe(first())
       .subscribe((data: Country[]) => {
         console.log('Data loaded', data);
+        this.countries$.next(data);
     });
 
   }

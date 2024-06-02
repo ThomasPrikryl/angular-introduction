@@ -14,6 +14,8 @@ import {CountryService} from "../../country.service";
 })
 export class CountryListComponent {
 
+  countries$ = this.countryService.countries$;
+
   constructor(private countryService: CountryService) {
   }
 
