@@ -55,6 +55,6 @@ export class ChildComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
   }
 
   get counterArray() {
-    return new Array(this.valueCounter);
+    return Array.from(new Array(this.valueCounter).keys());
   }
 }
