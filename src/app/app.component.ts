@@ -69,7 +69,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit
   }
 
   get counterArray() {
-    return new Array(this.valueCounter);
+    return Array.from(new Array(this.valueCounter).keys());
   }
 }
 
